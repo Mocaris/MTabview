@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TabView">
+        <!--选中状态-->
+        <attr name="tab_checked" format="boolean" />
+        <!--未选中图标-->
+        <attr name="tab_icon" format="reference" />
+        <!--选中图标-->
+        <attr name="tab_select_icon" format="reference" />
+        <!--图标大小-->
+        <attr name="icon_width" format="dimension" />
+        <!--图标大小-->
+        <attr name="icon_height" format="dimension" />
+        <!--tab文字-->
+        <attr name="tab_text" format="string" />
+        <!--文字大小-->
+        <attr name="tab_text_size" format="dimension" />
+        <!--未选中文字颜色-->
+        <attr name="tab_text_color" format="color" />
+        <!--选中文字颜色-->
+        <attr name="tab_text_select_color" format="color" />
+        <!--图标和文字间间距-->
+        <attr name="icon_txt_interval" format="dimension" />
+        <!--左上角 提示标-->
+        <attr name="show_tip_circle" format="boolean" />
+        <!--提示标颜色-->
+        <attr name="tip_circle_color" format="color" />
+        <!--提示文字-->
+        <attr name="tip_txt" format="string" />
+        <!--提示文字大小-->
+        <attr name="tip_txt_size" format="dimension" />
+        <!--提示文字颜色-->
+        <attr name="tip_txt_color" format="color" />
+        <!--提示标半径大小-->
+        <attr name="tip_radius" format="dimension" />
+    </declare-styleable>
+
+</resources>
