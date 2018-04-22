@@ -12,11 +12,11 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Looper;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
+
 
 /**
  * Created by mocaris on 2017/11/17.
@@ -70,7 +70,7 @@ public class TabView extends View implements View.OnClickListener {
         this(context, null);
     }
 
-    public TabView(Context context, @Nullable AttributeSet attrs) {
+    public TabView(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TabView);
 
@@ -128,7 +128,6 @@ public class TabView extends View implements View.OnClickListener {
     }
 
 
-    @Nullable
     @Override
     protected Parcelable onSaveInstanceState() {
         Parcelable superState = super.onSaveInstanceState();
@@ -316,18 +315,28 @@ public class TabView extends View implements View.OnClickListener {
         postInvalidate();
     }
 
-
-    public interface OnCheckedChangeListener {
-        void onChecked(TabView tab, boolean isChecked);
-    }
-
-
     private float getDp(int dp) {
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getResources().getDisplayMetrics());
     }
 
 
+    public interface OnCheckedChangeListener {
+        void onChecked(TabView tab, boolean isChecked);
+    }
+
     public static class SavedState extends BaseSavedState {
+        public static final Creator CREATOR = new Creator<SavedState>() {
+
+            @Override
+            public SavedState createFromParcel(Parcel source) {
+                return new SavedState(source);
+            }
+
+            @Override
+            public SavedState[] newArray(int size) {
+                return new SavedState[size];
+            }
+        };
         boolean checked;
 
         public SavedState(Parcelable superState) {
@@ -349,18 +358,5 @@ public class TabView extends View implements View.OnClickListener {
         public int describeContents() {
             return super.describeContents();
         }
-
-        public static final Creator CREATOR = new Creator<SavedState>() {
-
-            @Override
-            public SavedState createFromParcel(Parcel source) {
-                return new SavedState(source);
-            }
-
-            @Override
-            public SavedState[] newArray(int size) {
-                return new SavedState[size];
-            }
-        };
     }
 }

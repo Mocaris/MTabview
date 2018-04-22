@@ -34,5 +34,35 @@
         <!--提示标半径大小-->
         <attr name="tip_radius" format="dimension" />
     </declare-styleable>
-
+    <declare-styleable name="MTabView">
+        <attr name="tab_selected" format="boolean" />
+        <!--图片宽高比 默认 图片原比例-->
+        <attr name="tab_icon_ratio" format="string" />
+        <!--图片引用-->
+        <attr name="tab_icon_drawable" format="reference" />
+        <!--图片大小-->
+        <attr name="tab_icon_size" format="dimension" />
+        <!--tab 文字-->
+        <attr name="tab_txt" format="string" />
+        <!--tab 文字大小-->
+        <attr name="tab_txt_size" format="dimension" />
+        <!--tab 文字color-->
+        <attr name="tab_txt_color" format="color" />
+        <!--图片与文字中间间距-->
+        <attr name="tab_txt_icon_interval" format="dimension" />
+        <!--是否显示角标-->
+        <attr name="tab_show_angle" format="boolean" />
+        <!--角标半径 默认左边-->
+        <attr name="tab_angle_radius" format="dimension" />
+        <attr name="tab_angle_color" format="color" />
+        <!--角标数字-->
+        <attr name="tab_angle_digital" format="integer" />
+        <!--角标位置-->
+        <attr name="tab_angle_location" format="enum">
+            <!--右上角-->
+            <enum name="top_right" value="0" />
+            <!--左上角-->
+            <enum name="top_left" value="3" />
+        </attr>
+    </declare-styleable>
 </resources>

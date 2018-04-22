@@ -1,18 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-</android.support.constraint.ConstraintLayout>
+        <mocaris.com.tablayoutlib.TabView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            app:icon_height="30dp"
+            app:icon_width="30dp"
+            app:tab_icon="@drawable/barrage_fill"
+            app:tab_select_icon="@drawable/barrage_fill_press"
+            app:tab_text="barrage" />
+
+        <mocaris.com.tablayoutlib.TabView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            app:icon_height="30dp"
+            app:icon_width="30dp"
+            app:tab_icon="@drawable/addpeople_fill"
+            app:tab_select_icon="@drawable/addpeople_fill_press"
+            app:tab_text="people" />
+
+        <mocaris.com.tablayoutlib.TabView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            app:icon_height="30dp"
+            app:icon_width="30dp"
+            app:tab_icon="@drawable/barrage_fill"
+            app:tab_select_icon="@drawable/barrage_fill_press"
+            app:tab_text="barrage" />
+
+        <mocaris.com.tablayoutlib.TabView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            app:icon_height="30dp"
+            app:icon_width="30dp"
+            app:tab_icon="@drawable/addpeople_fill"
+            app:tab_select_icon="@drawable/addpeople_fill_press"
+            app:tab_text="people" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <mocaris.com.tablayoutlib.MTabView
+            android:id="@+id/tb1"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="#e5e5e5e5"
+            app:tab_angle_digital="3"
+            app:tab_angle_radius="6dp"
+            app:tab_icon_drawable="@drawable/selector"
+            app:tab_icon_size="30dp"
+            app:tab_selected="true"
+            app:tab_show_angle="true"
+            app:tab_txt="哈哈哈"
+            app:tab_txt_color="@color/txtselector"
+            app:tab_txt_icon_interval="-5dp"
+            app:tab_txt_size="16sp" />
+
+        <mocaris.com.tablayoutlib.MTabView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="#e5e5e5e5"
+            app:tab_angle_digital="5"
+            app:tab_icon_drawable="@drawable/selector"
+            app:tab_selected="false"
+            app:tab_show_angle="true"
+            app:tab_txt="通讯录"
+            app:tab_txt_color="@color/txtselector" />
+
+        <mocaris.com.tablayoutlib.MTabView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            app:tab_show_angle="true" />
+
+        <mocaris.com.tablayoutlib.MTabView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            app:tab_show_angle="true" />
+
+    </LinearLayout>
+
+</LinearLayout>
