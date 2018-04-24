@@ -210,7 +210,11 @@ class MTabView : View {
         iconPaint.isAntiAlias = true
         paddingBorder = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2f, resources.displayMetrics).toInt()
         meaMeasureTxt()
-        getDrawableFromStateDrwableList()
+        if (null != iconDrawable) {
+            tabIcon = arrayOf(getBitMapDrawable(android.R.attr.state_checked, iconDrawable!!)
+                    , getBitMapDrawable(-android.R.attr.state_checked, iconDrawable!!))
+        }
+//        getDrawableFromStateDrwableList()
     }
 
     //测量文字 大小
@@ -369,5 +373,47 @@ class MTabView : View {
         tabIcon = arrayOf(checkedDrawable, unCheckedDrawable)
     }
 
-
 }
+
+//扩展方法
+fun View.getBitMapDrawable(state: Int, drawable: StateListDrawable): BitmapDrawable? {
+    val clazz = StateListDrawable::class.java
+    val getStateCount: Method = clazz.getDeclaredMethod("getStateCount")//获取drawable中所有状态数量
+    val getStateSet: Method = clazz.getDeclaredMethod("getStateSet", Int::class.java) //获取索引处drawable的状态集合
+    val getStateDrawable: Method = clazz.getDeclaredMethod("getStateDrawable", Int::class.java)//获取索引处drawable
+    val sateCount = getStateCount.invoke(drawable) as Int
+    for (index in 0 until sateCount) {
+        val stateSet = getStateSet.invoke(drawable, index) as IntArray
+        if (stateSet.isEmpty()) {//未选中
+            val drawable = getStateDrawable.invoke(drawable, index)
+            if (drawable is BitmapDrawable) {
+                return drawable
+            } else {
+                throw IllegalStateException("tab_icon_drawable is not a bitmap !!!")
+            }
+        } else {
+            for ((i, state) in stateSet.withIndex()) {
+                //选中状态的drawable
+                if (state == android.R.attr.state_checked) {
+                    val drawable = getStateDrawable.invoke(drawable, index) as Drawable
+                    println("drawable::::::::::::::::::::::::::::::::$drawable")
+                    if (drawable is BitmapDrawable) {
+                        return drawable
+                    } else {
+                        throw IllegalStateException("tab_icon_drawable is not a bitmap !!!")
+                    }
+                } else if (state == -android.R.attr.state_checked) {//未选中
+                    val drawable = getStateDrawable.invoke(drawable, index) as Drawable
+                    println("drawable::::::::::::::::::::::::::::::::$drawable")
+                    if (drawable is BitmapDrawable) {
+                        return drawable
+                    } else {
+                        throw IllegalStateException("tab_icon_drawable is not a bitmap !!!")
+                    }
+                }
+            }
+        }
+    }
+    return null
+}
+
